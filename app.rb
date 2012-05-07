@@ -2,11 +2,11 @@
 require 'rubygems'
 require 'sinatra'
 require 'twitter'
-require 'pp'
+#require 'pp'
 
 before do
   Twitter.configure do |config|
-    config.proxy = 'http://proxy.gw.fujitsu.co.jp:8080'
+    #config.proxy = 'http://proxy.gw.fujitsu.co.jp:8080'
     config.consumer_key       = 'ubtspgyKhPYFbC3iJjpPmQ' #ENV['CONSUMER_KEY']
     config.consumer_secret    = 'Le1qLZAEG5Gr5dgExqCm6YnsFtzIafehhZcwIS2byk' #ENV['CONSUMER_SECRET']
     config.oauth_token        = '83754646-sJKzDBfeE4Q4cJ52oRQ6GBdY3wZLzzt98Fnv6iI2U' #ENV['OAUTH_TOKEN']
@@ -16,13 +16,13 @@ end
 
 get '/' do
   'HerokuでSinatraのHello world!'
-  prof = Twitter.user("gelegele")
+  prof = Twitter.user("gelegelebot")
   prof.screen_name
   ##pp prof
 end
 
 get '/latest' do
-  Twitter.user_timeline("gelegele").first.text #直近のツイート
+  Twitter.user_timeline("gelegelebot").first.text #直近のツイート
 end
 
 get '/tweet' do
