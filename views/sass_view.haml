@@ -1,0 +1,10 @@
+!!! XML
+!!!
+%html
+  %head
+    %title Time Line
+    %link{:rel=>"stylesheet", :type=>"text/css", :href=>"/style.css"}
+  %body
+    %h1 Time Line
+    -@time_line.each do |time_line_item|
+      %p.tweet= time_line_item.text

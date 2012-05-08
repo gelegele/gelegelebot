@@ -18,14 +18,15 @@ end
 
 get '/' do
   @user_name = Twitter.user().screen_name
-  @time_line = Twitter.user_timeline()
+  @time_line = Twitter.home_timeline()
   haml :index
 end
 
 get '/tweet' do
   t = Time.now
-  Twitter.update("Heroku Sinatra Hello world! at #{t}")
-  "tweet complete"
+  res = Twitter.update("Heroku Sinatra Hello world! at #{t}")
+  p res.text #リダイレクト後にツイートが表示されるためのおまじない
+  redirect '/'
 end
 
 
@@ -37,8 +38,8 @@ get '/style.css' do
   sass :stylesheet
 end
 #sassを使っったページ
-get '/timeline' do
+get '/sass' do
   @time_line = Twitter.user_timeline()
-  haml :timeline
+  haml :sass_view, :layout => false
 end
 

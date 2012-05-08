@@ -1,10 +1,6 @@
-!!! XML
-!!!
-%html
-  %head
-    %title @#{@user_name} Time Line
-    %link{:href=>"bootstrap/css/bootstrap.css", :type=>"text/css", :rel=>"stylesheet"}
-  %body
-    %h1 @#{@user_name} Time Line
-    -@time_line.each do |time_line_item|
-      %p.tweet #{time_line_item.text}
+%h2 Time Line
+%button.btn-primary{:onClick=>"location.href='/tweet'"} Tweet!
+-@time_line.each do |time_line_item|
+  %div.well
+    %p.tweet #{time_line_item.text}
+

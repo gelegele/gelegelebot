@@ -1,0 +1,10 @@
+!!! XML
+!!!
+%html
+  %head
+    %title @#{@user_name} PAGE
+    %link{:href=>"bootstrap/css/bootstrap.css", :type=>"text/css", :rel=>"stylesheet"}
+  %body
+    %div.container
+      %h1 @#{@user_name}
+      != yield
