@@ -6,6 +6,6 @@
 %div.row
   -@time_line.each do |time_line_item|
     %div.span12
-      %div.well
+      %div.well.well-tweet
         %p.tweet #{time_line_item.text}
         %p.timestamp #{time_line_item.created_at}
