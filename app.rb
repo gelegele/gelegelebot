@@ -8,7 +8,7 @@ require 'pp'
 
 before do	
   Twitter.configure do |config|
-    config.proxy = 'http://proxy.gw.fujitsu.co.jp:8080'
+    #config.proxy = 'http://proxy.gw.fujitsu.co.jp:8080'
     config.consumer_key       = 'avKZ3NXholdRuw19bpt82A' #ENV['CONSUMER_KEY']
     config.consumer_secret    = 'KQm1lw9KdevEBwRi3WsYFhKmF2VRqbsN31AxgSX8' #ENV['CONSUMER_SECRET']
     config.oauth_token        = '573594235-LEmaFKQ8jnWfZ9TGOslEC4Bt2pOE39wBMUxtt6gA' #ENV['OAUTH_TOKEN']
