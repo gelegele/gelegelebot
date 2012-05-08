@@ -16,9 +16,15 @@ before do
   end
 end
 
+#独自のスタイルシートはsassで定義
+get '/style.css' do
+  sass :stylesheet
+end
+
 get '/' do
   @user_name = Twitter.user().screen_name
   @time_line = Twitter.home_timeline()
+  pp @time_line.first
   haml :index
 end
 
@@ -30,14 +36,7 @@ get '/tweet' do
 end
 
 
-
-
-
-#スタイルシートをsassで定義してみた
-get '/style.css' do
-  sass :stylesheet
-end
-#sassを使っったページ
+#仮：sassを使っったページ
 get '/sass' do
   @time_line = Twitter.user_timeline()
   haml :sass_view, :layout => false

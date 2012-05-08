@@ -4,7 +4,9 @@
   %head
     %title @#{@user_name} PAGE
     %link{:href=>"bootstrap/css/bootstrap.css", :type=>"text/css", :rel=>"stylesheet"}
+    %link{:rel=>"stylesheet", :type=>"text/css", :href=>"/style.css"}
   %body
     %div.container
-      %h1 @#{@user_name}
+      %div.page-header
+        %h1 @#{@user_name}
       != yield
