@@ -8,8 +8,8 @@
     %div.span12.well.well-tweet
       %div.row
         %div.span1
-          %img{:src=>"#{time_line_item.user.profile_image_url}"}
+          %img.tweet{:src=>"#{time_line_item.user.profile_image_url}"}
         %div.span8
-          %p.tweet #{time_line_item.text}
+          %p.tweet.text #{time_line_item.text}
         %div.span3
-          %p.timestamp #{time_line_item.created_at}
+          %p.tweet.timestamp #{time_line_item.created_at}
