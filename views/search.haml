@@ -1,0 +1,11 @@
+%div.row
+  %div.span12
+    %h2 Search Results
+-@search_results.each do |search_result|
+  %div.row
+    %div.span12.well.well-tweet
+      %div.row
+        %div.span9
+          %p.tweet.text #{search_result.text}
+        %div.span3
+          %p.tweet.timestamp #{search_result.created_at}

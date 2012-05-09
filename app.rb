@@ -24,7 +24,6 @@ end
 get '/' do
   @user_name = Twitter.user().screen_name
   @time_line = Twitter.home_timeline()
-  pp @time_line.first
   haml :index
 end
 
@@ -33,6 +32,11 @@ get '/tweet' do
   res = Twitter.update("Heroku Sinatra Hello world! at #{t}")
   p res.text #リダイレクト後にツイートが表示されるためのおまじない
   redirect '/'
+end
+
+get '/search' do
+  @search_results = Twitter.search("ブライアンイーノ")
+  haml :search
 end
 
 
