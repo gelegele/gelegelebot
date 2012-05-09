@@ -7,6 +7,7 @@ require 'sass'
 require 'twitter'
 require 'pp'
 
+#イベント前に実行される
 before do	
   Twitter.configure do |config|
     #config.proxy = 'http://proxy.gw.fujitsu.co.jp:8080'
@@ -15,6 +16,7 @@ before do
     config.oauth_token        = '573594235-LEmaFKQ8jnWfZ9TGOslEC4Bt2pOE39wBMUxtt6gA'
     config.oauth_token_secret = '0nzp0btLR8jvrkln96if23Xih2D4UPMSa4d2uWPTlis'
   end
+  @user_name = Twitter.user().screen_name
 end
 
 #独自のスタイルシートはsassで定義
@@ -23,7 +25,6 @@ get '/style.css' do
 end
 
 get '/' do
-  @user_name = Twitter.user().screen_name
   @time_line = Twitter.home_timeline()
   haml :index
 end
@@ -35,9 +36,10 @@ get '/tweet' do
   redirect '/'
 end
 
+#get '/search/:name' do
 get '/search' do
-  #@search_results = Twitter.search("ブライアンイーノ")
-  @search_results = Twitter.search("もてき")
+  @search_word = params[:word]
+  @search_results = Twitter.search(@search_word)
   haml :search
 end
 
