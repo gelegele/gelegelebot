@@ -1,11 +1,13 @@
 %div.row
   %div.span12
-    %h2 Search Results
+    %h2 Search Results Of ?
 -@search_results.each do |search_result|
   %div.row
     %div.span12.well.well-tweet
       %div.row
-        %div.span9
+        %div.span1
+          %img.tweet{:src=>"#{search_result.profile_image_url}"}
+        %div.span8
           %p.tweet.text #{search_result.text}
         %div.span3
           %p.tweet.timestamp #{search_result.created_at}
