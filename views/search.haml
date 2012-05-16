@@ -2,11 +2,8 @@
   %div.span6
     %h2 Search Result Of #{@search_word}
   %div.span6{:align=>"right"}
-    %form.form-search
-      %input.search-query{:type=>"text"}
-      %button.btn{:type=>"submit"} Search
-
-
+    %form.form-search{:action=>"/search"}
+      %input.search-query{:name=>"word",:type=>"text",:placeholder=>"Search"}
 
 -@search_results.each do |search_result|
   %div.row

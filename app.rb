@@ -6,6 +6,7 @@ require 'haml'
 require 'sass'
 require 'twitter'
 require 'pp'
+require 'cgi'
 
 #イベント前に実行される
 before do	
@@ -36,11 +37,15 @@ get '/tweet' do
   redirect '/'
 end
 
-#get '/search/:name' do
 get '/search' do
-  @search_word = params[:word]
-  @search_results = Twitter.search(@search_word)
-  haml :search
+  param_word = CGI.escapeHTML(params[:word]) #サニタイズ
+  if !param_word || param_word.empty? then
+    haml :search_default
+  else
+    @search_word = param_word
+    @search_results = Twitter.search(@search_word)
+    haml :search
+  end
 end
 
 
