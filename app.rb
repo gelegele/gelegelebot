@@ -38,11 +38,11 @@ get '/tweet' do
 end
 
 get '/search' do
-  param_word = CGI.escapeHTML(params[:word]) #サニタイズ
+  param_word = params[:word]
   if !param_word || param_word.empty? then
     haml :search_default
   else
-    @search_word = param_word
+    @search_word = CGI.escapeHTML(param_word) #サニタイズ
     @search_results = Twitter.search(@search_word)
     haml :search
   end
