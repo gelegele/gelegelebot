@@ -1,6 +1,13 @@
 %div.row
-  %div.span12
+  %div.span6
     %h2 Search Result Of #{@search_word}
+  %div.span6{:align=>"right"}
+    %form.form-search
+      %input.search-query{:type=>"text"}
+      %button.btn{:type=>"submit"} Search
+
+
+
 -@search_results.each do |search_result|
   %div.row
     %div.span12.well.well-tweet
