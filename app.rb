@@ -39,11 +39,9 @@ end
 
 get '/search' do
   @raw_keyword = params[:keyword]
-  if !@raw_keyword || @raw_keyword.empty? then
-    haml :search_default
-  else
+  if @raw_keyword && !@raw_keyword.empty? then
     @sanitized_keyword = CGI.escapeHTML(@raw_keyword) #サニタイズ
     @search_results = Twitter.search(@sanitized_keyword)
-    haml :search
   end
+  haml :search
 end
