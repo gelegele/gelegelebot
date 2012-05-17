@@ -47,11 +47,3 @@ get '/search' do
     haml :search
   end
 end
-
-
-#仮：sassを使っったページ
-get '/sass' do
-  @time_line = Twitter.user_timeline()
-  haml :sass_view, :layout => false
-end
-
