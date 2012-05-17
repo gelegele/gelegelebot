@@ -1,10 +1,19 @@
-%div.row
+/ Tab Navi
+%ul.nav.nav-tabs
+  %li
+    %a{:href=>"/"}Time Line
+  %li.active
+    %a{:href=>"/search"}Search
+
+/ Page Header
+%div.row.tab-header
   %div.span6
-    %h2 Search Result Of #{@sanitized_keyword}
+    %h3 Result Of #{@sanitized_keyword}
   %div.span6{:align=>"right"}
-    %form.form-search{:action=>"/search"}
+    %form.form-search{:action=>"/search",:style=>"margin-bottom:0"}
       %input.search-query{:name=>"keyword",:type=>"text",:placeholder=>"Search",:value=>"#{@raw_keyword}"}
 
+/ Tweet List
 -@search_results.each do |search_result|
   %div.row
     %div.span12.well.well-tweet

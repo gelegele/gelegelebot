@@ -1,8 +1,16 @@
-%div.row
-  %div.span10
-    %h2 Time Line
-  %div.span2{:align=>"right"}
+/ Tab Navi
+%ul.nav.nav-tabs
+  %li.active
+    %a{:href=>"/"}Time Line
+  %li
+    %a{:href=>"/search"}Search
+
+/ Page Header
+%div.row.tab-header
+  %div.span12{:align=>"right"}
     %button.btn.btn-primary{:onClick=>"location.href='/tweet'"} Tweet
+
+/ Tweet List
 -@time_line.each do |time_line_item|
   %div.row
     %div.span12.well.well-tweet
