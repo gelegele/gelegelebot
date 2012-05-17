@@ -21,9 +21,14 @@
     %div.span12.well.well-tweet
       %div.row
         %div.span1
-          %a{:href=>"#{TWITTER_URL}#{@user_name}",:target=>"_blank"}
-            %img.tweet{:src=>"#{time_line_item.user.profile_image_url}"}
-        %div.span8
-          %p.tweet.text #{time_line_item.text}
-        %div.span3
-          %p.tweet.timestamp #{time_line_item.created_at}
+          %a{:href=>"#{TWITTER_URL}#{time_line_item.user.name}",:target=>"_blank"}
+            %img.tweet-img{:src=>"#{time_line_item.user.profile_image_url}"}
+        %div.span11
+          %div.row
+            %div.span7
+              %p.tweet-name @#{time_line_item.user.name}
+            %div.span4
+              %p.tweet-timestamp #{time_line_item.created_at}
+          %div.row
+            %div.span11
+              %p.tweet-text #{time_line_item.text}

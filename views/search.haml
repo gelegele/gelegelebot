@@ -26,8 +26,13 @@
         %div.row
           %div.span1
             %a{:href=>"#{TWITTER_URL}#{search_result.from_user}",:target=>"_blank"}
-              %img.tweet{:src=>"#{search_result.profile_image_url}"}
-          %div.span8
-            %p.tweet.text #{search_result.text}
-          %div.span3
-            %p.tweet.timestamp #{search_result.created_at}
+              %img.tweet-img{:src=>"#{search_result.profile_image_url}"}
+          %div.span11
+            %div.row
+              %div.span7
+                %p.tweet-name @#{search_result.from_user}
+              %div.span4
+                %p.tweet-timestamp #{search_result.created_at}
+            %div.row
+              %div.span11
+                %p.tweet-text #{search_result.text}
