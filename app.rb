@@ -11,7 +11,7 @@ require 'cgi'
 #イベント前に実行される
 before do	
   Twitter.configure do |config|
-    #config.proxy = 'http://proxy.gw.fujitsu.co.jp:8080'
+    config.proxy = 'http://proxy.gw.fujitsu.co.jp:8080'
     config.consumer_key       = 'avKZ3NXholdRuw19bpt82A'
     config.consumer_secret    = 'KQm1lw9KdevEBwRi3WsYFhKmF2VRqbsN31AxgSX8'
     config.oauth_token        = '573594235-LEmaFKQ8jnWfZ9TGOslEC4Bt2pOE39wBMUxtt6gA'
@@ -38,12 +38,12 @@ get '/tweet' do
 end
 
 get '/search' do
-  param_word = params[:word]
-  if !param_word || param_word.empty? then
+  @raw_keyword = params[:keyword]
+  if !@raw_keyword || @raw_keyword.empty? then
     haml :search_default
   else
-    @search_word = CGI.escapeHTML(param_word) #サニタイズ
-    @search_results = Twitter.search(@search_word)
+    @sanitized_keyword = CGI.escapeHTML(@raw_keyword) #サニタイズ
+    @search_results = Twitter.search(@sanitized_keyword)
     haml :search
   end
 end

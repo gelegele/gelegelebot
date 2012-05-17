@@ -1,9 +1,9 @@
 %div.row
   %div.span6
-    %h2 Search Result Of #{@search_word}
+    %h2 Search Result Of #{@sanitized_keyword}
   %div.span6{:align=>"right"}
     %form.form-search{:action=>"/search"}
-      %input.search-query{:name=>"word",:type=>"text",:placeholder=>"Search"}
+      %input.search-query{:name=>"keyword",:type=>"text",:placeholder=>"Search",:value=>"#{@raw_keyword}"}
 
 -@search_results.each do |search_result|
   %div.row
