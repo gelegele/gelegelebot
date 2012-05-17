@@ -1,3 +1,5 @@
+/ Search Page
+
 / Tab Navi
 %ul.nav.nav-tabs
   %li
@@ -6,7 +8,7 @@
     %a{:href=>"/search"}Search
 
 / Page Header
-%div.row.tab-header
+%div.row.glgl-tab-header
   %div.span6
     -if @sanitized_keyword
       %h3 Result "#{@sanitized_keyword}"
@@ -23,7 +25,8 @@
       %div.span12.well.well-tweet
         %div.row
           %div.span1
-            %img.tweet{:src=>"#{search_result.profile_image_url}"}
+            %a{:href=>"#{TWITTER_URL}#{search_result.from_user}",:target=>"_blank"}
+              %img.tweet{:src=>"#{search_result.profile_image_url}"}
           %div.span8
             %p.tweet.text #{search_result.text}
           %div.span3

@@ -1,3 +1,5 @@
+/ Time Line Page
+
 / Tab Navi
 %ul.nav.nav-tabs
   %li.active
@@ -6,8 +8,11 @@
     %a{:href=>"/search"}Search
 
 / Page Header
-%div.row.tab-header
-  %div.span12{:align=>"right"}
+%div.row.glgl-tab-header
+  %div.span6
+    %h3
+      %a{:href=>"#{TWITTER_URL}#{@user_name}",:target=>"_blank"}@#{@user_name}
+  %div.span6{:align=>"right"}
     %button.btn.btn-primary{:onClick=>"location.href='/tweet'"} Tweet
 
 / Tweet List
@@ -16,7 +21,8 @@
     %div.span12.well.well-tweet
       %div.row
         %div.span1
-          %img.tweet{:src=>"#{time_line_item.user.profile_image_url}"}
+          %a{:href=>"#{TWITTER_URL}#{@user_name}",:target=>"_blank"}
+            %img.tweet{:src=>"#{time_line_item.user.profile_image_url}"}
         %div.span8
           %p.tweet.text #{time_line_item.text}
         %div.span3
