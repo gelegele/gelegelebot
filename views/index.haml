@@ -1,4 +1,5 @@
 / Time Line Page
+- require './utils'
 
 / Tab Navi
 %ul.nav.nav-tabs
@@ -31,4 +32,4 @@
               %p.tweet-timestamp #{time_line_item.created_at}
           %div.row
             %div.span11
-              %p.tweet-text #{time_line_item.text}
+              %p.tweet-text= Utils.replace_uri_to_a(time_line_item.text)

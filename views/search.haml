@@ -1,4 +1,5 @@
 / Search Page
+- require './utils'
 
 / Tab Navi
 %ul.nav.nav-tabs
@@ -35,4 +36,4 @@
                 %p.tweet-timestamp #{search_result.created_at}
             %div.row
               %div.span11
-                %p.tweet-text #{search_result.text}
+                %p.tweet-text= Utils.replace_uri_to_a(search_result.text)
