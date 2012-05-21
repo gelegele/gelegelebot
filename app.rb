@@ -35,7 +35,7 @@ end
 #タイムライン
 get '/' do
   @time_line = Twitter.home_timeline()
-  haml :index
+  haml :timeline
 end
 
 #ツイートする
@@ -44,6 +44,14 @@ get '/tweet' do
   res = Twitter.update("Heroku Sinatra Hello world! at #{t}")
   p res.text #リダイレクト後にツイートが表示されるためのおまじない
   redirect '/'
+end
+
+#お気に入り
+get '/fav' do
+  #@favs = Twitter.favorites(Twitter.user().name)
+  @fav_user_name = "gelegele"
+  @favs = Twitter.favorites(@fav_user_name)
+  haml :fav
 end
 
 

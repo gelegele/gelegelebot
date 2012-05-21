@@ -1,0 +1,35 @@
+/ Fav Page
+- require './utils'
+
+/ Tab Navi
+%ul.nav.nav-tabs
+  %li
+    %a{:href=>"/"}Time Line
+  %li.active
+    %a{:href=>"/fav"}Fav
+  %li
+    %a{:href=>"/search"}Search
+
+/ Page Header
+%div.row.glgl-tab-header
+  %div.span
+    %h3
+      %a{:href=>"#{Utils::TWITTER_URL}#{@fav_user_name}/favorites",:target=>"_blank"}@#{@fav_user_name}'s favorites
+
+/ Tweet List
+-@favs.each do |fav_item|
+  %div.row
+    %div.span12.well.well-tweet
+      %div.row
+        %div.span1
+          %a{:href=>"#{Utils::TWITTER_URL}#{fav_item.user.name}",:target=>"_blank"}
+            %img.tweet-img{:src=>"#{fav_item.user.profile_image_url}"}
+        %div.span11
+          %div.row
+            %div.span7.tweet-name
+              %a{:href=>"#{Utils::TWITTER_URL}#{fav_item.user.name}",:target=>"_blank"} @#{fav_item.user.name}
+            %div.span4
+              %p.tweet-timestamp #{fav_item.created_at}
+          %div.row
+            %div.span11
+              %p.tweet-text= Utils.replace_to_a(fav_item.text)
