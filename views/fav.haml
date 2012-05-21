@@ -22,12 +22,12 @@
     %div.span12.well.well-tweet
       %div.row
         %div.span1
-          %a{:href=>"#{Utils::TWITTER_URL}#{fav_item.user.name}",:target=>"_blank"}
+          %a{:href=>"#{Utils::TWITTER_URL}#{fav_item.user.screen_name}/status/#{fav_item.id}",:target=>"_blank"}
             %img.tweet-img{:src=>"#{fav_item.user.profile_image_url}"}
         %div.span11
           %div.row
             %div.span7.tweet-name
-              %a{:href=>"#{Utils::TWITTER_URL}#{fav_item.user.name}",:target=>"_blank"} @#{fav_item.user.name}
+              %a{:href=>"#{Utils::TWITTER_URL}#{fav_item.user.screen_name}",:target=>"_blank"} @#{fav_item.user.screen_name}
             %div.span4
               %p.tweet-timestamp #{fav_item.created_at}
           %div.row

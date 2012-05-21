@@ -28,7 +28,7 @@
       %div.span12.well.well-tweet
         %div.row
           %div.span1
-            %a{:href=>"#{Utils::TWITTER_URL}#{search_result.from_user}",:target=>"_blank"}
+            %a{:href=>"#{Utils::TWITTER_URL}#{search_result.from_user}/status/#{search_result.id}",:target=>"_blank"}
               %img.tweet-img{:src=>"#{search_result.profile_image_url}"}
           %div.span11
             %div.row
