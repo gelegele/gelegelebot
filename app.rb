@@ -10,7 +10,6 @@ require 'cgi'
 
 #起動時１回だけ実行される
 configure do
-  TWITTER_URL = "http://twitter.com/"
   Twitter.configure do |config|
     #config.proxy = 'http://proxy.gw.fujitsu.co.jp:8080'
     config.consumer_key       = 'avKZ3NXholdRuw19bpt82A'
@@ -48,13 +47,6 @@ get '/tweet' do
 end
 
 
-#
-get '/user' do
-  pp Twitter.user()
-  Twitter.user().screen_name
-end
-
-
 #検索
 get '/search' do
   @raw_keyword = params[:keyword]
@@ -64,4 +56,11 @@ get '/search' do
     pp @search_results[0]
   end
   haml :search
+end
+
+
+#デバッグ用
+get '/debug' do
+  pp Twitter.user()
+  Twitter.user().screen_name
 end
