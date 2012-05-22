@@ -8,6 +8,9 @@ require 'twitter'
 require 'pp'
 require 'cgi'
 
+use Rack::Session::Pool, :expire_after => 2592000 # enable :sessions に代わってセションの暗号化
+
+
 #起動時１回だけ実行される
 configure do
   Twitter.configure do |config|
@@ -57,10 +60,19 @@ end
 
 #検索
 get '/search' do
-  @raw_keyword = params[:keyword]
-  if @raw_keyword && !@raw_keyword.empty? then
-    @sanitized_keyword = CGI.escapeHTML(@raw_keyword) #サニタイズ
-    @search_results = Twitter.search(@sanitized_keyword)
+  if params[:keyword] then 
+    if !params[:keyword].empty? then
+      @keyword = params[:keyword]
+    else
+      @keyword = nil
+    end
+    session[:keyword] = @keyword
+  else
+    @keyword = session[:keyword]
+  end
+
+  if @keyword then
+    @search_results = Twitter.search(CGI.escapeHTML(@keyword))
     pp @search_results[0]
   end
   haml :search

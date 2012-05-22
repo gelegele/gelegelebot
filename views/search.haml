@@ -1,5 +1,6 @@
 / Search Page
 - require './utils'
+- sanitized_keyword = CGI.escapeHTML(@keyword) if @keyword
 
 / Tab Navi
 %ul.nav.nav-tabs
@@ -13,13 +14,13 @@
 / Page Header
 %div.row.glgl-tab-header
   %div.span6
-    -if @sanitized_keyword
-      %h3 Result "#{@sanitized_keyword}"
+    -if sanitized_keyword
+      %h3 Result "#{sanitized_keyword}"
     -else
       %h3 Input search keyword.
   %div.span6{:align=>"right"}
     %form.form-search{:action=>"/search",:style=>"margin-bottom:0"}
-      %input.search-query{:name=>"keyword",:type=>"text",:placeholder=>"Search",:value=>"#{@raw_keyword}"}
+      %input.search-query{:name=>"keyword",:type=>"text",:placeholder=>"Search",:value=>"#{@keyword}"}
 
 / Tweet List
 -if @search_results
