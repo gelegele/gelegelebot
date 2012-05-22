@@ -14,7 +14,7 @@ use Rack::Session::Pool, :expire_after => 2592000 # enable :sessions に代わ�
 #起動時１回だけ実行される
 configure do
   Twitter.configure do |config|
-    #config.proxy = 'http://proxy.gw.fujitsu.co.jp:8080'
+    config.proxy = 'http://' + ENV["http_proxy"] if ENV["http_proxy"]
     config.consumer_key       = 'avKZ3NXholdRuw19bpt82A'
     config.consumer_secret    = 'KQm1lw9KdevEBwRi3WsYFhKmF2VRqbsN31AxgSX8'
     config.oauth_token        = '573594235-LEmaFKQ8jnWfZ9TGOslEC4Bt2pOE39wBMUxtt6gA'
