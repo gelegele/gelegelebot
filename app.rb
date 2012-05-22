@@ -7,14 +7,19 @@ require 'sass'
 require 'twitter'
 require 'pp'
 require 'cgi'
+require 'logger'
 
 use Rack::Session::Pool, :expire_after => 2592000 # enable :sessions に代わってセションの暗号化
 
 
 #起動時１回だけ実行される
 configure do
+  Log = Logger.new(STDOUT)
   Twitter.configure do |config|
-    config.proxy = 'http://' + ENV["http_proxy"] if ENV["http_proxy"]
+    if ENV["http_proxy"]
+      config.proxy = 'http://' + ENV["http_proxy"]
+      Log.info "config.proxy ==> " + config.proxy
+    end
     config.consumer_key       = 'avKZ3NXholdRuw19bpt82A'
     config.consumer_secret    = 'KQm1lw9KdevEBwRi3WsYFhKmF2VRqbsN31AxgSX8'
     config.oauth_token        = '573594235-LEmaFKQ8jnWfZ9TGOslEC4Bt2pOE39wBMUxtt6gA'
@@ -26,6 +31,7 @@ end
 #イベント前に実行される
 before do	
   @user_name = Twitter.user().screen_name
+  Log.info "@user_name ==> " + @user_name
 end
 
 
@@ -60,8 +66,8 @@ end
 
 #検索
 get '/search' do
-  if params[:keyword] then 
-    if !params[:keyword].empty? then
+  if params[:keyword]
+    if !params[:keyword].empty?
       @keyword = params[:keyword]
     else
       @keyword = nil
@@ -71,9 +77,9 @@ get '/search' do
     @keyword = session[:keyword]
   end
 
-  if @keyword then
+  if @keyword
     @search_results = Twitter.search(CGI.escapeHTML(@keyword))
-    pp @search_results[0]
+    Log.info @search_results[0].pretty_inspect
   end
   haml :search
 end
@@ -81,6 +87,6 @@ end
 
 #デバッグ用
 get '/debug' do
-  pp Twitter.user()
+  Log.info Twitter.user().pretty_inspect
   Twitter.user().screen_name
 end
