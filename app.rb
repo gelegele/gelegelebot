@@ -78,7 +78,7 @@ get '/search' do
   end
 
   if @keyword
-    @search_results = Twitter.search(CGI.escapeHTML(@keyword))
+    @search_results = Twitter.search(CGI.escapeHTML(@keyword) + " lang:ja")
     Log.info @search_results[0].pretty_inspect
   end
   haml :search
