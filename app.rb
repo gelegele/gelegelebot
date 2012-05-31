@@ -17,7 +17,7 @@ configure do
   Log = Logger.new(STDOUT)
   Twitter.configure do |config|
     if ENV["http_proxy"]
-      config.proxy = 'http://' + ENV["http_proxy"]
+      config.proxy = ENV["http_proxy"]
       Log.info "config.proxy ==> " + config.proxy
     end
     config.consumer_key       = 'avKZ3NXholdRuw19bpt82A'
