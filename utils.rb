@@ -7,7 +7,7 @@ class Utils
   #•¶Žš—ñ’†‚Ì@xxxx‚ðaƒ^ƒO‚É•ÏŠ·‚µ‚½•¶Žš—ñ‚ð•Ô‚µ‚Ü‚·
   def self.replace_twitter_name_to_a(s)
     name_reg = /(^|\s)@\w+/
-    replaced = s.gsub(name_reg){|name| '<a href="' + TWITTER_URL + name.strip.sub("@", "") + '" target="_blank">' + name.strip + '</a>'}
+    replaced = s.gsub(name_reg){|name| '<a href="' + TWITTER_URL + name.strip.sub("@", "") + '" target="_blank">' + name.strip + ' </a>'}
     return replaced
   end
 

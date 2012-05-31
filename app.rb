@@ -48,7 +48,7 @@ end
 #タイムライン
 get '/timeline' do
   @time_line = Twitter.home_timeline()
-  haml :timeline
+  haml :tab_timeline
 end
 
 #ツイートする
@@ -64,7 +64,7 @@ get '/fav' do
   #@favs = Twitter.favorites(Twitter.user().name)
   @fav_user_name = "gelegele"
   @favs = Twitter.favorites(@fav_user_name)
-  haml :fav
+  haml :tab_fav
 end
 
 
@@ -85,7 +85,7 @@ get '/search' do
     @search_results = Twitter.search(CGI.escapeHTML(@keyword) + " lang:ja")
     Log.info @search_results[0].pretty_inspect
   end
-  haml :search
+  haml :tab_search
 end
 
 
