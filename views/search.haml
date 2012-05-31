@@ -2,15 +2,6 @@
 - require './utils'
 - sanitized_keyword = CGI.escapeHTML(@keyword) if @keyword
 
-/ Tab Navi
-%ul.nav.nav-tabs
-  %li
-    %a{:href=>"/"}Time Line
-  %li
-    %a{:href=>"/fav"}Fav
-  %li.active
-    %a{:href=>"/search"}Search
-
 / Page Header
 %div.row.glgl-tab-header
   %div.span6

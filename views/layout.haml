@@ -8,8 +8,20 @@
     %link{:href=>"bootstrap/css/bootstrap.css", :type=>"text/css", :rel=>"stylesheet"}
     %link{:href=>"bootstrap/css/bootstrap-responsive.css", :type=>"text/css", :rel=>"stylesheet"}
     %link{:rel=>"stylesheet", :type=>"text/css", :href=>"/style.css"}
+    %script{:type=>"text/javascript", :src=>"gelegelescript.js"}
   %body
     %div.container
+
       %div.glgl-page-header
         %h1 gelegele heroku
+
+      / Tab Navi
+      %ul.nav.nav-tabs
+        %li#tab-timeline
+          %a{:href=>"/"}Time Line
+        %li#tab-fav
+          %a{:href=>"/fav"}Fav
+        %li#tab-search
+          %a{:href=>"/search"}Search
+
       != yield

@@ -40,9 +40,13 @@ get '/style.css' do
   sass :stylesheet
 end
 
+#デフォルト
+get '/' do
+  redirect '/timeline'
+end
 
 #タイムライン
-get '/' do
+get '/timeline' do
   @time_line = Twitter.home_timeline()
   haml :timeline
 end
