@@ -2,22 +2,22 @@
  * javascript by gelegele
  */
 
-// ページロード時
+// 繝壹�ｼ繧ｸ繝ｭ繝ｼ繝画凾
 window.onload = function(){
   activateNavTab();
 }
 
-// URLに該当するNAVI TAB をアクティブにする
+// URL縺ｫ隧ｲ蠖薙☆繧起AVI TAB 繧偵い繧ｯ繝�繧｣繝悶↓縺吶ｋ
 function activateNavTab() {
   var slashIndex = location.href.lastIndexOf("/");
   var questionIndex = location.href.lastIndexOf("?");
-  // ホスト名に続く
+  // 繝帙せ繝亥錐縺ｫ邯壹￥
   var pageName;
   if (0 <= questionIndex) {
-    // リクエストパラメータ付きURL
+    // 繝ｪ繧ｯ繧ｨ繧ｹ繝医ヱ繝ｩ繝｡繝ｼ繧ｿ莉倥″URL
     pageName = location.href.slice(slashIndex + 1, questionIndex);
   } else {
-    // リクエストパラメータなしURL
+    // 繝ｪ繧ｯ繧ｨ繧ｹ繝医ヱ繝ｩ繝｡繝ｼ繧ｿ縺ｪ縺誘RL
     pageName = location.href.substr(slashIndex + 1);
   }
   var tab = document.getElementById("tab-" + pageName);
