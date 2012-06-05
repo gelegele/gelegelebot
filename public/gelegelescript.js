@@ -5,13 +5,19 @@
 // ページロード時
 window.onload = function(){
   activateNavTab();
+  
+  // 無限スクロール
+  $.autopager({
+      content: '#tweets',   // コンテンツ部分のセレクタ 
+      link   : '#next'      // 次ページリンクのセレクタ
+  });
 }
+
 
 // URLに該当するNAVI TAB をアクティブにする
 function activateNavTab() {
   var slashIndex = location.href.lastIndexOf("/");
   var questionIndex = location.href.lastIndexOf("?");
-  // ホスト名に続く
   var pageName;
   if (0 <= questionIndex) {
     // リクエストパラメータ付きURL
@@ -27,5 +33,6 @@ function activateNavTab() {
 
 // 外部リンクを別タブで開く
 $(function(){
-     $("a[href^='http://']").attr("target","_blank");
+    $("a[href^='http://']").attr("target","_blank");
 });
+

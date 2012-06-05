@@ -32,6 +32,14 @@ end
 before do	
   @user_name = Twitter.user().screen_name
   Log.info "@user_name ==> " + @user_name
+
+  #ページ番号
+  if params[:page]
+    @page = params[:page]
+  else
+    @page = 1
+  end
+
 end
 
 
@@ -47,14 +55,7 @@ end
 
 #タイムライン
 get '/timeline' do
-
-  #暫定：ページ機能
-  page = 1
-  if params[:page]
-    page = params[:page]
-  end
-
-  @time_line = Twitter.home_timeline({page:page})
+  @time_line = Twitter.home_timeline({page:@page})
   haml :tab_timeline
 end
 
@@ -88,21 +89,13 @@ get '/search' do
     @keyword = session[:keyword]
   end
 
-  #暫定：ページ機能
-  page = 1
-  if params[:page]
-    page = params[:page]
-  end
-
   if @keyword
     @search_results = Twitter.search(
-        CGI.escapeHTML(@keyword), {lang:'ja', rpp:30, page:page})
+        CGI.escapeHTML(@keyword), {lang:'ja', rpp:30, page:@page})
     Log.info @search_results[0].pretty_inspect
   end
   haml :tab_search
 end
-
-#TODO 検索のpageインクリメント jsでページ下部までスクロールしたら自動追加したいな
 
 
 #デバッグ用
