@@ -24,3 +24,8 @@ function activateNavTab() {
   tab.className = "active";
 }
 
+
+// 外部リンクを別タブで開く
+$(function(){
+     $("a[href^='http://']").attr("target","_blank");
+});

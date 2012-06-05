@@ -20,12 +20,12 @@
       %div.span12.well.well-tweet
         %div.row
           %div.span1
-            %a{:href=>"#{Utils::TWITTER_URL}#{search_result.from_user}/status/#{search_result.id}",:target=>"_blank"}
+            %a{:href=>"#{Utils::TWITTER_URL}#{search_result.from_user}/status/#{search_result.id}"}
               %img.tweet-img{:src=>"#{search_result.profile_image_url}"}
           %div.span11
             %div.row
               %div.span7.tweet-name
-                %a{:href=>"#{Utils::TWITTER_URL}#{search_result.from_user}",:target=>"_blank"} @#{search_result.from_user}
+                %a{:href=>"#{Utils::TWITTER_URL}#{search_result.from_user}"} @#{search_result.from_user}
               %div.span4
                 %p.tweet-timestamp #{search_result.created_at}
             %div.row

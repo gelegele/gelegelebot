@@ -5,7 +5,7 @@
 %div.row.glgl-tab-header
   %div.span
     %h3
-      %a{:href=>"#{Utils::TWITTER_URL}#{@fav_user_name}/favorites",:target=>"_blank"}@#{@fav_user_name}'s favorites
+      %a{:href=>"#{Utils::TWITTER_URL}#{@fav_user_name}/favorites"}@#{@fav_user_name}'s favorites
 
 / Tweet List
 -@favs.each do |fav_item|
@@ -13,12 +13,12 @@
     %div.span12.well.well-tweet
       %div.row
         %div.span1
-          %a{:href=>"#{Utils::TWITTER_URL}#{fav_item.user.screen_name}/status/#{fav_item.id}",:target=>"_blank"}
+          %a{:href=>"#{Utils::TWITTER_URL}#{fav_item.user.screen_name}/status/#{fav_item.id}"}
             %img.tweet-img{:src=>"#{fav_item.user.profile_image_url}"}
         %div.span11
           %div.row
             %div.span7.tweet-name
-              %a{:href=>"#{Utils::TWITTER_URL}#{fav_item.user.screen_name}",:target=>"_blank"} @#{fav_item.user.screen_name}
+              %a{:href=>"#{Utils::TWITTER_URL}#{fav_item.user.screen_name}"} @#{fav_item.user.screen_name}
             %div.span4
               %p.tweet-timestamp #{fav_item.created_at}
           %div.row
