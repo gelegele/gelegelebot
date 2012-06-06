@@ -9,10 +9,10 @@ require 'pp'
 require 'cgi'
 require 'logger'
 
-use Rack::Session::Pool, :expire_after => 2592000 # enable :sessions に代わってセションの暗号化
+use Rack::Session::Pool, :expire_after => 2592000 # instead of "enable :sessions" to encrypt
 
 
-#起動時１回だけ実行される
+# at start
 configure do
   Log = Logger.new(STDOUT)
   Twitter.configure do |config|
@@ -28,12 +28,12 @@ configure do
 end
 
 
-#イベント前に実行される
+# at event
 before do	
   @user_name = Twitter.user().screen_name
   Log.info "@user_name ==> " + @user_name
 
-  #ページ番号
+  # page no
   if params[:page]
     @page = params[:page]
   else
@@ -43,31 +43,27 @@ before do
 end
 
 
-#独自のスタイルシートはsassで定義
 get '/style.css' do
   sass :stylesheet
 end
 
-#デフォルト
+# default is redirected to timeline
 get '/' do
   redirect '/timeline'
 end
 
-#タイムライン
 get '/timeline' do
   @time_line = Twitter.home_timeline({page:@page})
   haml :tab_timeline
 end
 
-#ツイートする
 get '/tweet' do
   t = Time.now
   res = Twitter.update("Heroku Sinatra Hello world! at #{t}")
-  p res.text #リダイレクト後にツイートが表示されるためのおまじない
+  p res.text # Is this needed?
   redirect '/'
 end
 
-#お気に入り
 get '/fav' do
   #@favs = Twitter.favorites(Twitter.user().name)
   @fav_user_name = "gelegele"
@@ -76,7 +72,6 @@ get '/fav' do
 end
 
 
-#検索
 get '/search' do
   if params[:keyword]
     if !params[:keyword].empty?
@@ -98,7 +93,7 @@ get '/search' do
 end
 
 
-#デバッグ用
+# debugger
 get '/debug' do
   Log.info Twitter.user().pretty_inspect
   Twitter.user().screen_name

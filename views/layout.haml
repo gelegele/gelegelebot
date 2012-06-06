@@ -3,14 +3,10 @@
 %html
   %head
     %title gelegele heroku
-    -# モバイル向けだが意味あるのかな？
     %meta{:name=>"viewport", :content=>"width=device-width, initial-scale=1.0"}
-    %link{:href=>"bootstrap/css/bootstrap.css", :type=>"text/css", :rel=>"stylesheet"}
-    %link{:href=>"bootstrap/css/bootstrap-responsive.css", :type=>"text/css", :rel=>"stylesheet"}
+    %link{:href=>"bootstrap/css/bootstrap.min.css", :type=>"text/css", :rel=>"stylesheet"}
+    %link{:href=>"bootstrap/css/bootstrap-responsive.min.css", :type=>"text/css", :rel=>"stylesheet"}
     %link{:rel=>"stylesheet", :type=>"text/css", :href=>"/style.css"}
-    %script{:type=>"text/javascript", :src=>"jquery/jquery.js"}
-    %script{:type=>"text/javascript", :src=>"jquery/jquery.autopager.js"}
-    %script{:type=>"text/javascript", :src=>"gelegelescript.js"}
   %body
     %div.container
       / Page Header
@@ -26,4 +22,10 @@
         %li#tab-search
           %a{:href=>"/search"}Search
       / Tab Page
+
       != yield
+
+    %script{:type=>"text/javascript", :src=>"jquery/jquery.js"}
+    %script{:type=>"text/javascript", :src=>"jquery/jquery.autopager.js"}
+    %script{:type=>"text/javascript", :src=>"bootstrap/js/bootstrap.min.js"}
+    %script{:type=>"text/javascript", :src=>"gelegelescript.js"}
