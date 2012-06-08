@@ -53,7 +53,7 @@ get '/' do
 end
 
 get '/timeline' do
-  @time_line = Twitter.home_timeline({page:@page})
+  @time_line = Twitter.home_timeline({:page=>@page})
   haml :tab_timeline
 end
 
@@ -86,7 +86,7 @@ get '/search' do
 
   if @keyword
     @search_results = Twitter.search(
-        CGI.escapeHTML(@keyword), {lang:'ja', rpp:30, page:@page})
+        CGI.escapeHTML(@keyword), {:lang=>'ja', :rpp=>30, :page=>@page})
     Log.info @search_results[0].pretty_inspect
   end
   haml :tab_search
