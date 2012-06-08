@@ -2,17 +2,10 @@
  * javascript by gelegele
  */
 
-// ページロード時
-window.onload = function(){
-  activateNavTab();
-  
-  // 無限スクロール
-  $.autopager({
-      content: '#tweets',   // コンテンツ部分のセレクタ 
-      link   : '#next'      // 次ページリンクのセレクタ
-  });
+// 外部リンクを別タブで開く
+function externalLinkTargetBlank() {
+    $("a[href^='http://']").attr("target","_blank");
 }
-
 
 // URLに該当するNAVI TAB をアクティブにする
 function activateNavTab() {
@@ -31,8 +24,16 @@ function activateNavTab() {
 }
 
 
-// 外部リンクを別タブで開く
-$(function(){
-    $("a[href^='http://']").attr("target","_blank");
-});
+window.onload = function(){
+  $(externalLinkTargetBlank());
 
+  activateNavTab();
+
+  $.autopager({
+      content: '#tweets',
+      link   : '#next',
+      load   : function() {
+          $(this).ready(externalLinkTargetBlank());
+      }
+  });
+}
