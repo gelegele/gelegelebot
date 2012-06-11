@@ -58,10 +58,22 @@ get '/timeline' do
 end
 
 get '/tweet' do
+  haml :tab_tweet
+end
+
+post '/tweet' do
+  tweet_text = params[:text].strip
+  if tweet_text.empty?
+    haml :tab_tweet
+    return
+  end
+  res = Twitter.update(tweet_text)
+  redirect '/timeline'
+end
+
+get '/autotweet' do
   t = Time.now
   res = Twitter.update("Heroku Sinatra Hello world! at #{t}")
-  p res.text # Is this needed?
-  redirect '/'
 end
 
 get '/fav' do
@@ -92,6 +104,10 @@ get '/search' do
   haml :tab_search
 end
 
+get '/activity' do
+  pp Twitter.activity_about_me
+  #pp Twitter.activity_by_friends
+end
 
 # debugger
 get '/debug' do

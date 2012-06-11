@@ -3,11 +3,9 @@
 
 / Page Header
 %div.row.glgl-tab-header
-  %div.span6
+  %div.span12
     %h3
       %a{:href=>"#{Utils::TWITTER_URL}#{@user_name}"}@#{@user_name}'s Time Line
-  %div.span6{:align=>"right"}
-    %button.btn.btn-primary{:onClick=>"location.href='/tweet'"} Tweet
 
 / Tweet List
 %div.tweets

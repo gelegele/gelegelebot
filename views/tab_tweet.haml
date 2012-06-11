@@ -1,0 +1,11 @@
+/ Tweet Page
+
+/ Page Header
+%div.row.glgl-tab-header
+  %div.span12
+    %h3 Tweet as @#{@user_name}
+  %div.span12
+    %form{:action=>"/tweet", :method=>"post"}
+      %input{:name=>"text", :type=>"text"}
+      %input{:type=>"submit", :value=>"Tweet!"}
+
