@@ -15,7 +15,7 @@
 
 / Tweet List
 -if @search_results
-  %div#tweets
+  %div.tweets
     -@search_results.each do |search_result|
       %div.row
         %div.span12.well.well-tweet
@@ -32,5 +32,6 @@
               %div.row
                 %div.span11
                   %p.tweet-text= Utils.replace_to_a(search_result.text)
-  %a#next{:href=>"/search?keyword=#{@keyword}&page=#{@page.to_i + 1}"}
+    %div.next
+      %a.next{:href=>"/search?keyword=#{@keyword}&page=#{@page.to_i + 1}"}next
   %hr

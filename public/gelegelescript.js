@@ -26,14 +26,13 @@ function activateNavTab() {
 
 window.onload = function(){
   $(externalLinkTargetBlank());
-
   activateNavTab();
-
   $.autopager({
-      content: '#tweets',
-      link   : '#next',
+      content: '.tweets',
+      link   : 'a.next',
       load   : function() {
           $(this).ready(externalLinkTargetBlank());
+          $("div.next:first").remove();
       }
   });
 }

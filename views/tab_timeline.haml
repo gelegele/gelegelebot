@@ -10,7 +10,7 @@
     %button.btn.btn-primary{:onClick=>"location.href='/tweet'"} Tweet
 
 / Tweet List
-%div#tweets
+%div.tweets
   -@time_line.each do |time_line_item|
     %div.row
       %div.span12.well.well-tweet
@@ -27,5 +27,6 @@
             %div.row
               %div.span11
                 %p.tweet-text= Utils.replace_to_a(time_line_item.text)
-%a#next{:href=>"/timeline?page=#{@page.to_i + 1}"}
+  %div.next
+    %a.next{:href=>"/timeline?page=#{@page.to_i + 1}"}next
 %hr
