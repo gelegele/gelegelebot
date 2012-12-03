@@ -23,6 +23,21 @@ function activateNavTab() {
   tab.className = "active";
 }
 
+// fav/unfavボタン
+function postFav(id, favorited) {
+  var url = 'unfavorite';
+  if (!favorited) {
+    url = 'favorite';
+  }
+  alert(url);
+  $.ajax({
+      type: 'POST',
+      url: url,
+      data: {'id': id},
+      success: function(data){alert("OK")},
+      error: function(data){alert("NG")}
+    });
+}
 
 window.onload = function(){
   $(externalLinkTargetBlank());

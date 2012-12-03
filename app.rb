@@ -1,7 +1,7 @@
 # coding: utf-8
 require 'rubygems'
 require 'sinatra'
-#require 'sinatra/reloader' if development?
+require 'sinatra/reloader' if development?
 require 'haml'
 require 'sass'
 require 'twitter'
@@ -78,11 +78,17 @@ end
 
 get '/fav' do
   #@favs = Twitter.favorites(Twitter.user().name)
-  @fav_user_name = "gelegele"
-  @favs = Twitter.favorites(@fav_user_name)
+  @favs = Twitter.favorites(@user_name)
   haml :tab_fav
 end
 
+post '/favorite' do
+  Twitter.favorite(params[:id])
+end
+
+post '/unfavorite' do
+  Twitter.unfavorite(params[:id])
+end
 
 get '/search' do
   if params[:keyword]

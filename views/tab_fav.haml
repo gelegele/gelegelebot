@@ -5,7 +5,7 @@
 %div.row.glgl-tab-header
   %div.span
     %h3
-      %a{:href=>"#{Utils::TWITTER_URL}#{@fav_user_name}/favorites"}@#{@fav_user_name}'s favorites
+      %a{:href=>"#{Utils::TWITTER_URL}#{@user_name}/favorites"}@#{@user_name}'s favorites
 
 / Tweet List
 -@favs.each do |fav_item|
@@ -22,5 +22,7 @@
             %div.span4
               %p.tweet-timestamp #{fav_item.created_at}
           %div.row
-            %div.span11
+            %div.span9
               %p.tweet-text= Utils.replace_to_a(fav_item.text)
+            %div.span2
+              %a.fav-button{:href=>"javascript: void(0)", :onclick=>"postFav(#{fav_item.id}, #{fav_item.favorited})"} #{fav_item.favorited ? "favorited" : "unfavorited"}
