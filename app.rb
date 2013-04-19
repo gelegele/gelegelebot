@@ -1,7 +1,7 @@
 # coding: utf-8
 require 'rubygems'
 require 'sinatra'
-require 'sinatra/reloader' if development?
+# require 'sinatra/reloader' if development?
 require 'haml'
 require 'sass'
 require 'twitter'
@@ -20,10 +20,14 @@ configure do
       config.proxy = ENV["http_proxy"]
       Log.info "config.proxy ==> " + config.proxy
     end
-    config.consumer_key       = 'avKZ3NXholdRuw19bpt82A'
-    config.consumer_secret    = 'KQm1lw9KdevEBwRi3WsYFhKmF2VRqbsN31AxgSX8'
-    config.oauth_token        = '573594235-LEmaFKQ8jnWfZ9TGOslEC4Bt2pOE39wBMUxtt6gA'
-    config.oauth_token_secret = '0nzp0btLR8jvrkln96if23Xih2D4UPMSa4d2uWPTlis'
+    Log.error "CONSUMER_KEY" unless ENV['CONSUMER_KEY']
+    # ENV['CONSUMER_SECRET']       
+    # ENV['OAUTH_TOKEN']
+    # ENV['OAUTH_TOKEN_SECRET']
+    config.consumer_key       = ENV['CONSUMER_KEY']
+    config.consumer_secret    = ENV['CONSUMER_SECRET']
+    config.oauth_token        = ENV['OAUTH_TOKEN']
+    config.oauth_token_secret = ENV['OAUTH_TOKEN_SECRET']
   end
 end
 
